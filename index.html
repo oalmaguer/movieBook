@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Book</title>
+</head>
+<body>
+    <div class="content container">
+   
+    
+    <input type="button" class="btn-primary" id="btnTrend" value="See Trending movies by week"></input>
+    <input type="button" class="btn-primary" id="btnSearch" value="Search most popular movies by year"></input>
+    
+    <select name="movieSearch" id="movieSearch">
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+            <option value="1999">1999</option>
+            <option value="1998">1998</option>
+            <option value="1997">1997</option>
+            <option value="1996">1996</option>
+            <option value="1995">1995</option>
+            <option value="1994">1994</option>
+            <option value="1993">1993</option>
+            <option value="1992">1992</option>
+            <option value="1991">1991</option>
+            <option value="1990">1990</option>
+            <option value="1989">1989</option>
+            <option value="1988">1988</option>
+            <option value="1987">1987</option>
+            <option value="1986">1986</option>
+            <option value="1985">1985</option>
+            <option value="1984">1984</option>
+            <option value="1983">1983</option>
+            <option value="1982">1982</option>
+            <option value="1981">1981</option>
+            <option value="1980">1980</option>
+            <option value="1979">1979</option>
+            <option value="1978">1978</option>
+            <option value="1977">1977</option>
+            <option value="1976">1976</option>
+            <option value="1975">1975</option>
+            <option value="1974">1974</option>
+            <option value="1973">1973</option>
+            <option value="1972">1972</option>
+            <option value="1971">1971</option>
+            <option value="1970">1970</option>
+            <option value="1969">1969</option>
+            <option value="1968">1968</option>
+            <option value="1967">1967</option>
+            <option value="1966">1966</option>
+            <option value="1965">1965</option>
+            <option value="1964">1964</option>
+            <option value="1963">1963</option>
+            <option value="1962">1962</option>
+            <option value="1961">1961</option>
+            <option value="1960">1960</option>
+            <option value="1959">1959</option>
+            <option value="1958">1958</option>
+            <option value="1957">1957</option>
+            <option value="1956">1956</option>
+            <option value="1955">1955</option>
+            <option value="1954">1954</option>
+            <option value="1953">1953</option>
+            <option value="1952">1952</option>
+            <option value="1951">1951</option>
+            <option value="1950">1950</option>
+            </select>
+
+            <input type="button" class="btn-primary" id="btnGenre" value="Search most popular movies by Genre and Year"></input>
+            <select name="movieSearchGenre" id="movieSearchGenre">
+                    <option value="28">Action</option>
+                    <option value="12">Adventure</option>
+                    <option value="16">Animation</option>
+                    <option value="27">Horror</option>
+                    <option value="35">Comedy</option>
+                    <option value="80">Crime</option>
+                    <option value="99">Documentary</option>
+                    <option value="18">Drama</option>
+                    <option value="878">Science Fiction</option>
+                    </select>
+    <!-- <input type="text" id="movieSearch"></input> -->
+
+    
+   
+        
+            <table class="table-movie table-striped">
+                    <tbody>
+                     
+                    </tbody>
+                  </table>
+                
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+       var movie = $("#movieSearch").val();
+        var queryURL = "http://www.omdbapi.com/?apikey=dcedfc78&s=" +movie;
+       
+        $("#btnSearch").on("click", function(){
+            event.preventDefault();
+
+             var movie = $("#movieSearch :selected").val();
+             var queryURL = "http://www.omdbapi.com/?apikey=dcedfc78&t=" +movie;
+
+             var queryURLYear = "https://api.themoviedb.org/3/discover/movie?api_key=3ce487e5f4b9c4f747c250ad1fb0e3b0&language=en-US&primary_release_year="+movie+"";
+
+             var queryURLTrending = "https://api.themoviedb.org/3/trending/all/week?api_key=3ce487e5f4b9c4f747c250ad1fb0e3b0";
+
+            //YEAR
+            
+
+        $.ajax ({
+            url: queryURLYear,
+            method: 'GET'
+        }).then(function(response) {
+            console.log(response);
+
+
+            var arrayMovies = [];
+            var arrayOverview = [];
+            var arrayYear = [];
+            var arrayPoster = [];
+
+            for (let i=0;i<20;i++){
+            let moviePopular = response.results[i].original_title;
+            let movieOverview = response.results[i].overview;
+            let moviePoster = response.results[i].poster_path;
+            let movieDate = response.results[i].release_date;
+            
+           
+            queryPoster = "http://image.tmdb.org/t/p/w185//"+moviePoster+"";
+            
+            // // let movieActors = response.Actors;
+            // // let movieRatings = response.Ratings[2];
+            // // let moviePlot = response.Plot;
+            popular = moviePopular;
+            overview = movieOverview;
+            poster = queryPoster;
+            date = movieDate;
+
+            arrayMovies.push(popular);
+            arrayYear.push(date);
+            arrayOverview.push(overview);
+            arrayPoster.push(poster);
+            // ratings = JSON.stringify(movieRatings);
+            // plot = JSON.stringify(moviePlot);
+            
+            }
+            console.log(arrayMovies);
+
+            $("tbody").empty();
+            $(".content").append("<table>");
+            $("tbody").append("<th>"+"Title"+"</th");
+            $("tbody").append("<th>"+"Year"+"</th");
+            $("tbody").append("<th>"+"Plot"+"</th");
+            $("tbody").addClass("thead-dark");
+
+           for (i=0;i<arrayMovies.length;i++) {
+               $(".table-movie").append("<tr><td>"+arrayMovies[i]+"<img src=" +arrayPoster[i]+ ">"+"</td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
+           }
+
+        })
+        
+    })
+   
+        //TRENDING
+
+        $("#btnTrend").on("click", function(){
+            event.preventDefault();
+
+             var queryURLTrending = "https://api.themoviedb.org/3/trending/all/week?api_key=3ce487e5f4b9c4f747c250ad1fb0e3b0";
+
+            
+            
+
+        $.ajax ({
+            url: queryURLTrending,
+            method: 'GET'
+        }).then(function(response) {
+            console.log(response);
+
+
+            var arrayMovies = [];
+            var arrayOverview = [];
+            var arrayYear = [];
+            var arrayPoster = [];
+
+            for (let i=0;i<20;i++){
+            var moviePopular = response.results[i].original_title;
+            var movieOverview = response.results[i].overview;
+            var moviePoster = response.results[i].poster_path;
+            var movieDate = response.results[i].release_date;
+            
+            queryPoster = "http://image.tmdb.org/t/p/w185//"+moviePoster+"";
+            
+            // // let movieActors = response.Actors;
+            // // let movieRatings = response.Ratings[2];
+            // // let moviePlot = response.Plot;
+            popular = moviePopular;
+            overview = movieOverview;
+            poster = queryPoster;
+            date = movieDate;
+
+            if (typeof response.results[i].original_title != "undefined"){
+
+            arrayMovies.push(popular);
+            arrayYear.push(date);
+            arrayOverview.push(overview);
+            arrayPoster.push(poster);
+            
+            } 
+            
+            
+            }
+            console.log(arrayMovies);
+
+            $("tbody").empty();
+           $(".content").append("<table>");
+           $("tbody").append("<th>"+"Title"+"</th");
+            $("tbody").append("<th>"+"Year"+"</th");
+             $("tbody").append("<th>"+"Plot"+"</th");
+             $("tbody").addClass("thead-dark");
+             
+             
+
+           for (i=0;i<arrayMovies.length;i++) {
+               $(".table-movie").append("<tr><td>"+arrayMovies[i]+"<img src=" +arrayPoster[i]+ ">"+"</td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
+           }
+
+        })
+        
+        
+    })
+        
+
+        //by genre
+
+     $("#btnGenre").on("click", function(){
+            event.preventDefault();
+
+            var movie = $("#movieSearch :selected").val();
+            var genreSelected = $("#movieSearchGenre").val();
+            console.log(genreSelected);
+
+            var queryURLGenre = "https://api.themoviedb.org/3/discover/movie?api_key=3ce487e5f4b9c4f747c250ad1fb0e3b0&language=en-US&with_genres="+genreSelected+"&primary_release_year="+movie+"";
+
+        $.ajax ({
+            url: queryURLGenre,
+            method: 'GET'
+        }).then(function(response) {
+            
+
+            var arrayMovies = [];
+            var arrayOverview = [];
+            var arrayYear = [];
+            var arrayPoster = [];
+
+            for (let i=0;i<20;i++){
+            var moviePopular = response.results[i].original_title;
+            var movieOverview = response.results[i].overview;
+            var moviePoster = response.results[i].poster_path;
+            var movieDate = response.results[i].release_date;
+            
+            queryPoster = "http://image.tmdb.org/t/p/w185//"+moviePoster+"";
+            
+            // // let movieActors = response.Actors;
+            // // let movieRatings = response.Ratings[2];
+            // // let moviePlot = response.Plot;
+            popular = moviePopular;
+            overview = movieOverview;
+            poster = queryPoster;
+            date = movieDate;
+
+            if (typeof response.results[i].original_title != "undefined"){
+
+            arrayMovies.push(popular);
+            arrayYear.push(date);
+            arrayOverview.push(overview);
+            arrayPoster.push(poster);
+            
+            } 
+            
+            
+            }
+            console.log(arrayMovies);
+
+            $("tbody").empty();
+           $(".content").append("<table>");
+           $("tbody").append("<th>"+"Title"+"</th");
+            $("tbody").append("<th>"+"Year"+"</th");
+             $("tbody").append("<th>"+"Plot"+"</th");
+             $("tbody").addClass("thead-dark");
+             
+             
+
+           for (i=0;i<arrayMovies.length;i++) {
+               $(".table-movie").append("<tr><td>"+arrayMovies[i]+"<img src=" +arrayPoster[i]+ ">"+"</td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
+           }
+
+            
+        })
+     })
+    </script>
+    </div>
+</body>
+</html>

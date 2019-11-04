@@ -1,0 +1,39 @@
+.content {
+    margin-top: 40px;
+    
+    
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    background-color: white;
+
+  }
+
+  .select {
+    font:normal 11px/22px Arial, Sans-Serif;
+    color:black;
+    border:1px solid #ccc;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 50px;
+  }
+
+  h1 {
+      color: red;
+  }
+
+  table {
+      margin-top: 40px;
+      
+  }
+
+  body {
+      background-image: url(../movieBook/images/tableImage.jpg);
+  }
