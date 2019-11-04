@@ -1,6 +1,9 @@
  var movie = $("#movieSearch").val();
         var queryURL = "http://www.omdbapi.com/?apikey=dcedfc78&s=" +movie;
        
+
+
+        
         $("#btnSearch").on("click", function(){
             event.preventDefault();
 
@@ -61,7 +64,7 @@
             $("tbody").addClass("thead-dark");
 
            for (i=0;i<arrayMovies.length;i++) {
-               $(".table-movie").append("<tr><td>"+arrayMovies[i]+"<img src=" +arrayPoster[i]+ ">"+"</td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
+            $(".table-movie").append("<tr><td>"+arrayMovies[i]+ "<img src=" +arrayPoster[i]+" class="+"imgClass"+"></td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
            }
 
         })
@@ -129,7 +132,7 @@
              
 
            for (i=0;i<arrayMovies.length;i++) {
-               $(".table-movie").append("<tr><td>"+arrayMovies[i]+"<img src=" +arrayPoster[i]+ ">"+"</td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
+            $(".table-movie").append("<tr><td>"+arrayMovies[i]+ "<img src=" +arrayPoster[i]+" class="+"imgClass"+"></td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
            }
 
         })
@@ -199,9 +202,7 @@
              
 
            for (i=0;i<arrayMovies.length;i++) {
-               $(".table-movie").append("<tr><td>"+arrayMovies[i]+"<img src=" +arrayPoster[i]+ ">"+"</td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
+            $(".table-movie").append("<tr><td>"+arrayMovies[i]+ "<img src=" +arrayPoster[i]+" class="+"imgClass"+"></td><td>"+arrayYear[i]+"</td><td>"+arrayOverview[i]+"</td></tr>");
            }
-
-            
         })
      })

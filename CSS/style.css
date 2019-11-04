@@ -37,3 +37,12 @@ table {
   body {
       background-image: url(../images/tableImage.jpg);
   }
+
+.imgClass {
+  height: 300px;
+  width: 200px;
+  margin-top: 20px;
+  border-radius: 25px;  
+  border: 5px solid white;
+}
+
