@@ -56,8 +56,11 @@ h2 {
 }
 
 @media (max-width: 575.98px) { 
-  table{
-  display: block;
+   tr{
+     font-size: 11px;
+  line-height: 13px;
+  min-height: 10px;
+  height: 15px;
   }
  }
 
