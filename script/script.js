@@ -27,12 +27,14 @@ $("#btnSearch").on("click", function() {
     var arrayOverview = [];
     var arrayYear = [];
     var arrayPoster = [];
+    var arrayAverage = [];
 
     for (let i = 0; i < 20; i++) {
       let moviePopular = response.results[i].original_title;
       let movieOverview = response.results[i].overview;
       let moviePoster = response.results[i].poster_path;
       let movieDate = response.results[i].release_date;
+      var movieAverage = response.results[i].vote_average;
 
       queryPoster = "http://image.tmdb.org/t/p/w185//" + moviePoster + "";
 
@@ -43,11 +45,13 @@ $("#btnSearch").on("click", function() {
       overview = movieOverview;
       poster = queryPoster;
       date = movieDate;
+      average = movieAverage;
 
       arrayMovies.push(popular);
       arrayYear.push(date);
       arrayOverview.push(overview);
       arrayPoster.push(poster);
+      arrayAverage.push(average);
       // ratings = JSON.stringify(movieRatings);
       // plot = JSON.stringify(moviePlot);
     }
@@ -58,23 +62,27 @@ $("#btnSearch").on("click", function() {
     $("tbody").append("<th>" + "Title" + "</th");
     $("tbody").append("<th>" + "Year" + "</th");
     $("tbody").append("<th>" + "Plot" + "</th");
+    $("tbody").append("<th>" + "Average" + "</th");
     $("tbody").addClass("thead-dark");
 
     for (i = 0; i < arrayMovies.length; i++) {
-      $(".table-movie").append(
-        "<tr><td>" +
-          arrayMovies[i] +
-          "<img src=" +
-          arrayPoster[i] +
-          " class=" +
-          "imgClass" +
-          "></td><td>" +
-          arrayYear[i] +
-          "</td><td>" +
-          arrayOverview[i] +
-          "</td></tr>"
-      );
-    }
+        $(".table-movie").append(
+          "<tr><td>" +
+            arrayMovies[i] +
+            "<img src=" +
+            arrayPoster[i] +
+            " class=" +
+            "imgClass" +
+            "></td><td>" +
+            arrayYear[i] +
+            "</td><td>" +
+            arrayOverview[i] +
+            " " +
+            "</td><td>" +
+            arrayAverage[i] +
+            "</td></tr>"
+        );
+      }
   });
 });
 
@@ -96,12 +104,14 @@ $("#btnTrend").on("click", function() {
     var arrayOverview = [];
     var arrayYear = [];
     var arrayPoster = [];
+    var arrayAverage = [];
 
     for (let i = 0; i < 20; i++) {
       var moviePopular = response.results[i].original_title;
       var movieOverview = response.results[i].overview;
       var moviePoster = response.results[i].poster_path;
       var movieDate = response.results[i].release_date;
+      var movieAverage = response.results[i].vote_average;
 
       queryPoster = "http://image.tmdb.org/t/p/w185//" + moviePoster + "";
 
@@ -112,12 +122,14 @@ $("#btnTrend").on("click", function() {
       overview = movieOverview;
       poster = queryPoster;
       date = movieDate;
+      average = movieAverage;
 
       if (typeof response.results[i].original_title != "undefined") {
         arrayMovies.push(popular);
         arrayYear.push(date);
         arrayOverview.push(overview);
         arrayPoster.push(poster);
+        arrayAverage.push(average);
       }
     }
     console.log(arrayMovies);
@@ -127,23 +139,27 @@ $("#btnTrend").on("click", function() {
     $("tbody").append("<th>" + "Title" + "</th");
     $("tbody").append("<th>" + "Year" + "</th");
     $("tbody").append("<th>" + "Plot" + "</th");
+    $("tbody").append("<th>" + "Average" + "</th");
     $("tbody").addClass("thead-dark");
 
     for (i = 0; i < arrayMovies.length; i++) {
-      $(".table-movie").append(
-        "<tr><td>" +
-          arrayMovies[i] +
-          "<img src=" +
-          arrayPoster[i] +
-          " class=" +
-          "imgClass" +
-          "></td><td>" +
-          arrayYear[i] +
-          "</td><td>" +
-          arrayOverview[i] +
-          "</td></tr>"
-      );
-    }
+        $(".table-movie").append(
+          "<tr><td>" +
+            arrayMovies[i] +
+            "<img src=" +
+            arrayPoster[i] +
+            " class=" +
+            "imgClass" +
+            "></td><td>" +
+            arrayYear[i] +
+            "</td><td>" +
+            arrayOverview[i] +
+            " " +
+            "</td><td>" +
+            arrayAverage[i] +
+            "</td></tr>"
+        );
+      }
   });
 });
 
@@ -173,8 +189,7 @@ $("#btnGenre").on("click", function() {
     var arrayYear = [];
     var arrayPoster = [];
     var arrayAverage = [];
-    var arrayLinks = [];
-
+    
     for (let i = 0; i < 20; i++) {
       var moviePopular = response.results[i].original_title;
       var movieOverview = response.results[i].overview;
@@ -201,11 +216,11 @@ $("#btnGenre").on("click", function() {
         arrayOverview.push(overview);
         arrayPoster.push(poster);
         arrayAverage.push(average);
-        arrayLinks.push(links);
+       
       }
     }
     console.log(arrayMovies);
-    console.log(arrayLinks);
+   
 
     $("tbody").empty();
     $(".content").append("<table>");
@@ -228,11 +243,6 @@ $("#btnGenre").on("click", function() {
           "</td><td>" +
           arrayOverview[i] +
           " " +
-          "<a href=" +
-          arrayLinks[i] +
-          ">" +
-          arrayMovies[i] +
-          "</a>" +
           "</td><td>" +
           arrayAverage[i] +
           "</td></tr>"
@@ -261,13 +271,15 @@ $(".btnTitle").on("click", function() {
     var arrayOverview = [];
     var arrayYear = [];
     var arrayPoster = [];
+    var arrayAverage = [];
 
-    for (var i = 0; i < 20; i++) {
+    for (var i= 0; i<responseTitle.results.length; i++) {
       var moviePopular = responseTitle.results[i].original_title;
       console.log(moviePopular);
       var movieOverview = responseTitle.results[i].overview;
       var moviePoster = responseTitle.results[i].poster_path;
       var movieDate = responseTitle.results[i].release_date;
+      var movieAverage = responseTitle.results[i].vote_average;
 
       queryPoster = "http://image.tmdb.org/t/p/w185//" + moviePoster + "";
 
@@ -278,14 +290,15 @@ $(".btnTitle").on("click", function() {
       overview = movieOverview;
       poster = queryPoster;
       date = movieDate;
+      average = movieAverage;
 
       if (typeof moviePopular != "undefined") {
         arrayMovies.push(moviePopular);
         arrayYear.push(date);
         arrayOverview.push(overview);
         arrayPoster.push(poster);
-        
-      }
+        arrayAverage.push(average);
+      } 
     }
     
 
@@ -294,23 +307,27 @@ $(".btnTitle").on("click", function() {
     $("tbody").append("<th>" + "Title" + "</th");
     $("tbody").append("<th>" + "Year" + "</th");
     $("tbody").append("<th>" + "Plot" + "</th");
+    $("tbody").append("<th>" + "Average" + "</th");
     $("tbody").addClass("thead-dark");
 
-    for (i = 0; i < arrayMovies.length; i++) {
-      $(".table-movie").append(
-        "<tr><td>" +
-          arrayMovies[i] +
-          "<img src=" +
-          arrayPoster[i] +
-          " class=" +
-          "imgClass" +
-          "></td><td>" +
-          arrayYear[i] +
-          "</td><td>" +
-          arrayOverview[i] +
-          "</td></tr>"
-      );
-    }
+    for (var i = 0; i < arrayMovies.length; i++) {
+        $(".table-movie").append(
+          "<tr><td>" +
+            arrayMovies[i] +
+            "<img src=" +
+            arrayPoster[i] +
+            " class=" +
+            "imgClass" +
+            "></td><td>" +
+            arrayYear[i] +
+            "</td><td>" +
+            arrayOverview[i] +
+            " " +
+            "</td><td>" +
+            arrayAverage[i] +
+            "</td></tr>"
+        );
+      }
   });
 
 });
