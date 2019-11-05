@@ -60,3 +60,7 @@ h2 {
   display: block;
   }
  }
+
+ .table-responsive {
+  overflow-x:auto;
+ }
