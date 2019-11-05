@@ -54,3 +54,9 @@ h2 {
   color: white;
   background: rgba(0, 0, 0, 0.473);
 }
+
+@media (max-width: 575.98px) { 
+  table{
+  display: block;
+  }
+ }
