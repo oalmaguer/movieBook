@@ -131,6 +131,11 @@ $("#btnTrend").on("click", function() {
         arrayPoster.push(poster);
         arrayAverage.push(average);
       }
+
+      if (arrayAverage[i] >= 7) {
+        $(arrayAverage[i]).addClass("badge badge-success")
+      }
+
     }
     console.log(arrayMovies);
 
@@ -334,20 +339,73 @@ $(".btnTitle").on("click", function() {
 
 //books
 
-//      $("#btnGenre").on("click", function(){
-//         event.preventDefault();
+     $(".btnLibro").on("click", function(){
+        event.preventDefault();
 
-//         // var movie = $("#movieSearch :selected").val();
-//         // var genreSelected = $("#movieSearchGenre").val();
-//         // console.log(genreSelected);
+        var libro = $("#movieSearchTitle").val();
+        var genreSelected = $("#movieSearchGenre").val();
+        console.log(genreSelected);
 
-//         var queryURLBook = 'http://openlibrary.org/search.json?title=the+lord+of+the+rings';
+        var queryURLBook = 'http://openlibrary.org/subjects/'+libro+'.json?limit=10';
 
-//     $.ajax ({
-//         url: queryURLBook,
-//         method: 'GET'
-//     }).then(function(responseBook) {
-//         console.log(responseBook);
-//     })
+    $.ajax ({
+        url: queryURLBook,
+        method: 'GET'
+    }).then(function(responseBook) {
+        console.log(responseBook);
 
-// })
+        var coverId;
+
+    var arrayBooks = [];
+    var arrayOverview = [];
+    var arrayYear = [];
+    var arrayPoster = [];
+    var arrayAverage = [];
+
+    for (var i= 0; i<responseBook.works.length; i++) {
+      var moviePopular = responseBook.works[i].title;
+      var moviePoster = responseBook.works[i].cover_id;
+
+      // // let movieActors = response.Actors;
+      // // let movieRatings = response.Ratings[2];
+      // // let moviePlot = response.Plot;
+      
+      
+     
+
+      poster = "http://covers.openlibrary.org/b/id/"+moviePoster+"-M.jpg";
+
+      if (typeof moviePopular != "undefined") {
+        arrayBooks.push(moviePopular);
+        
+       
+        arrayPoster.push(poster);
+       
+      } 
+    }
+    
+
+    $("tbody").empty();
+    $(".content").append("<table>");
+    $("tbody").append("<th>" + "Title" + "</th");
+    $("tbody").append("<th>" + "Poster" + "</th");
+   
+    $("table").css("width", "65%");
+    $("tbody").addClass("thead-dark");
+
+    for (var i = 0; i < arrayBooks.length; i++) {
+        $(".table-movie").append(
+          "<tr><td>" +
+            arrayBooks[i] +"</td><td>"+ 
+            "<img src=" +
+            arrayPoster[i] +
+            " class=" +
+            "imgClass" +
+            "></td></tr>"
+        );
+      }
+  });
+
+});
+        
+
