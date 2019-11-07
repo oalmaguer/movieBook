@@ -1,7 +1,29 @@
 .content {
     margin-top: 40px;
-    
-    
+  
+}
+
+.btnTitle {
+  width: 185px;
+}
+
+#movieSearchGenre {
+  width: 350px;
+  margin-top: 0px;
+}
+
+#btnSearch {
+  width: 70px;
+}
+
+#movieSearch {
+  margin-left: 226px;
+  width: 71px;
+}
+
+#movieSearchTitle {
+  
+  width: 365px;
 }
 
 table {

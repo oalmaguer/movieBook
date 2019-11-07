@@ -15,7 +15,10 @@
    
     
     <input type="button" class="btn-primary" id="btnTrend" value="See Trending movies by week"></input>
-    <input type="button" class="btn-primary" id="btnSearch" value="Search most popular movies by year"></input>
+    <input type="button" class="btn-primary" id="btnSearch" value="Year"></input>
+    <input type="button" class="btn-primary" id="btnGenre" value="Search most popular movies by Genre and Year"></input>
+    <input type="text" name="title" id="movieSearchTitle" placeholder="Write the name of your movie">
+
     
     <select name="movieSearch" id="movieSearch">
             <option value="2019">2019</option>
@@ -89,8 +92,8 @@
             <option value="1951">1951</option>
             <option value="1950">1950</option>
             </select>
-
-            <input type="button" class="btn-primary" id="btnGenre" value="Search most popular movies by Genre and Year"></input>
+            
+           
             <select name="movieSearchGenre" id="movieSearchGenre">
                     <option value="28">Action</option>
                     <option value="12">Adventure</option>
@@ -104,8 +107,9 @@
                     </select>
     <!-- <input type="text" id="movieSearch"></input> -->
             
-            <input type="text" name="title" id="movieSearchTitle" placeholder="Find your movie by Title">
-            <input type="submit" value="submit" class="btnTitle btn-primary mt-4"> 
+          
+    <input type="submit" value="Search by Title" class="btnTitle btn-primary mt-4"> 
+    <input type="submit" value="Recommended Movies" class="btnRecommend btn-primary mt-4"> 
             
             
             <table class="table-movie table-striped table-light table-hover table-sm text-center table-responsive">
