@@ -3,8 +3,17 @@
   
 }
 
+h1 {
+  font-family: 'Orbitron', sans-serif;
+
+}
+
 .btnTitle {
   width: 185px;
+}
+
+.input-group {
+  margin-top: 20px;
 }
 
 #movieSearchGenre {
@@ -16,10 +25,7 @@
   width: 70px;
 }
 
-#movieSearch {
-  margin-left: 226px;
-  width: 71px;
-}
+
 
 #movieSearchTitle {
   
