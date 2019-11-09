@@ -76,7 +76,6 @@ table {
     
     background-position: 0px 0px;
     background-repeat: repeat-y;
-  
     animation: animatedBackground 27s linear infinite;
   }
 
@@ -100,14 +99,13 @@ h2 {
   background: rgba(0, 0, 0, 0.473);
 }
 
-
-
 @media (max-width: 575.98px) { 
    tr{
      font-size: 11px;
   line-height: 13px;
   min-height: 10px;
   height: 15px;
+  width: -0;
   }
  }
 
