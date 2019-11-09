@@ -3,6 +3,11 @@
   
 }
 
+.d-block {
+  height: 350px;
+  width: 200px;
+}
+
 h1 {
   font-family: 'Orbitron', sans-serif;
 
@@ -68,6 +73,18 @@ table {
 
   body {
       background-image: url(../images/tableImage.jpg);
+    
+    background-position: 0px 0px;
+    background-repeat: repeat-y;
+  
+    animation: animatedBackground 27s linear infinite;
+  }
+
+
+
+  @keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
   }
 
 .imgClass {
@@ -93,4 +110,5 @@ h2 {
   height: 15px;
   }
  }
+
 
